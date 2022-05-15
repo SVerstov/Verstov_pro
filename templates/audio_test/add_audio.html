@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block sub_title %}
+    Добавить аудиокомпозицию
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'add_audio' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {# авто - вывод форм, обернутых в параграфы         ##}
+                {{ form.as_p }}
+                <div class="validation-error">
+                    {{ form.non_field_errors }}
+                </div>
+    <button type="submit" class="btn btn-primary">Загрузить аудио</button>
+    </form>
+{% endblock %}

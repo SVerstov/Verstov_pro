@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block sub_title %}
+    Ваша записка
+{% endblock %}
+
+{% block content %}
+    <div class="form-group">
+            <textarea class="form-control" name="user_note" readonly='' rows="10">{{ note }}</textarea>
+        </div>
+{% endblock %}

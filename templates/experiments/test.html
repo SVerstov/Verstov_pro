@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+    <div id="sample">
+        Geeksforgeeks is best learning platform.
+    </div>
+    <br/>
+
+    <button onclick="copyText()">Copy</button>
+    <br/>
+
+    <h1>Copied Text:</h1><br/>
+    <textarea id="textbox"></textarea>
+    <button onclick="copyText()" id='copy-btn' class="btn btn-outline-primary">Копировать</button>
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>audio</title>
+    </head>
+    <body>
+    <p>Александр Клименков - Четырнадцать</p>
+    <audio controls>
+        {#    <source src="audio/music.ogg" type="audio/ogg; codecs=vorbis">#}
+        <source src="{{ mp3_file }}" type="audio/mp3">
+        Тег audio не поддерживается вашим браузером.
+        <a href="{{ mp3_file.url }}">Скачайте музыку</a>.
+    </audio>
+    <div>
+        <button onclick="sendRequest(csrf)" id='req-btn' quality='wav' class="btn btn-outline-primary">Запрос!!!</button>
+    </div>
+
+
+    <br>
+    <div id="rnd">
+        <p> div1 - p1</p>
+        <p> div1 - p2</p>
+        <p> div1 - p3</p>
+    </div>
+    <br>
+    <div>
+        <p> div2 - p1</p>
+        <p> div2 - p2</p>
+        <p> div3 - p3</p>
+    </div>
+         <button onclick="shuffle()">Перемешать</button>
+
+
+    <script>
+      const csrf = '{{ csrf_token }}';
+      // const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+      </script>
+    <script src="{% static 'js/experiments/requests.js' %}"></script>
+
+    <div>
+        <ul>
+    <li>milk</li>
+    <li>butter</li>
+    <li>eggs</li>
+    <li>orange juice</li>
+    <li>bananas</li>
+</ul>
+    </div>
+
+    <script>
+        var ul = document.querySelector('#rnd');
+for (var i = ul.children.length; i >= 0; i--) {
+    ul.appendChild(ul.children[Math.random() * i | 0]);
+}
+    </script>
+
+
+    </body>
+    </html>
+
+
+{% endblock %}
