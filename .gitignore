@@ -118,8 +118,6 @@ local_settings.py
 .env
 db.sqlite3
 
-# pycharm
-.idea/
 
 # media files
 media/
