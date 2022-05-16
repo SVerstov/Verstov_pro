@@ -27,8 +27,11 @@ class AudioComposition(models.Model):
                                                                              "Пожалуйста загрузите файл с расширением : %(allowed_extensions)s.")])
     mp3_320 = models.FileField(upload_to=content_file_name, blank=True)
     mp3_128 = models.FileField(upload_to=content_file_name, blank=True)
-    number_of_attempts = models.IntegerField(default=0)
-    number_of_correct_attempts = models.IntegerField(default=0)
+    # collect attempts statistic
+    clicks_on_128 = models.IntegerField(default=0)
+    clicks_on_320 = models.IntegerField(default=0)
+    click_wav = models.IntegerField(default=0)
+
     is_published = models.BooleanField('опубликовано', default=True)
 
     def __str__(self):
