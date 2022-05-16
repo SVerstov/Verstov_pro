@@ -120,3 +120,6 @@ db.sqlite3
 
 # media
 media/
+
+# pycharm
+.idea/
