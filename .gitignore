@@ -122,3 +122,6 @@ db.sqlite3
 # media files
 media/
 
+# IDE settings
+.idea/workspace.xml
+.idea/tasks.xml
