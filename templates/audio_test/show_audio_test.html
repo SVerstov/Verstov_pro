@@ -5,18 +5,19 @@
     Тест на аудиофила
 {% endblock %}
 
+
+
+
+
 {% block content %}
+
+
+
     <a href="{% url 'add_audio' %}">Добавить аудио</a>
 
     {% for song in songs %}
         {#  Вывод всех аудиокомпозиций      #}
-        <div>
-            {{ song.author }}
-            {{ song.title }}
-            {{ song.photo.url }}
-            <br>
-        </div>
-
+        {{ song.pk }}
 
         <div class="card mb-3">
             <div class="row g-0">
@@ -25,10 +26,29 @@
                 </div>
                 <div class="col-md-10">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <h5 class="card-title">НАЗВАНИЕ ТРЕКА</h5>
+                        <p class="card-text">
+                        <div class="song">
+
+                            <div>
+                                <audio src="{{ song.uncompressed_audio.url }}" controls></audio>
+                                <button song_id="{{ song.id }} vote="uncompressed_audio">Выбрать</button>
+                            </div>
+
+                            <div style="background-color: red">
+                                <audio src="{{ song.mp3_320.url }}" controls></audio>
+                                <button song_id="{{ song.id }}" vote='mp3_320'>Выбрать</button>
+                            </div>
+
+                            <div>
+                                <audio src="{{ song.mp3_128.url }}" controls></audio>
+                                <button song_id="{{ song.id }}" vote='mp3_128'>Выбрать</button>
+                            </div>
+
+
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -36,6 +56,9 @@
     {% endfor %}
 
 
-    <script src="{% static 'js/audio_test/audio_test.js' %}"></script>
+    <script src="{% static 'js/audio_test/control_audio.js' %}"></script>
+    <script src="{% static 'js/audio_test/shuffle_audio.js' %}"></script>
+    <script src="{% static 'js/audio_test/buttons_click_events.js' %}"></script>
+
 
 {% endblock %}

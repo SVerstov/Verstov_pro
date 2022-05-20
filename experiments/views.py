@@ -4,9 +4,9 @@ from django.http import HttpResponse
 
 
 def test(request):
-    mp3_file = AudioComposition.objects.get(title='test').mp3_320
+    song = AudioComposition.objects.get(title='test')
 
-    context = {"mp3_file": mp3_file.url}
+    context = {"song": song}
     return render(request, 'experiments/test.html', context)
 
 
