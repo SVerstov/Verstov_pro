@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.contrib import messages
+from django.http import HttpResponse
 
 from .forms import AudioCompositionForm
 from .models import AudioComposition
@@ -49,3 +50,7 @@ def convert_to_mp3_and_save():
 # class AddAudio(LoginRequiredMixin, CreateView):
 #     form_class = AudioCompositionForm
 #     template_name = 'audio_test/add_audio.html'
+def post_processing(request):
+    print('Запрос с JS:')
+    print(request.headers)
+    return HttpResponse('')

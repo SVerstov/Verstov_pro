@@ -22,12 +22,4 @@
     <orderEntry type="jdk" jdkName="Python 3.10 (Verstov_pro)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
-  <component name="TemplatesService">
-    <option name="TEMPLATE_CONFIGURATION" value="Django" />
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/../Verstov_pro\templates" />
-      </list>
-    </option>
-  </component>
 </module>

@@ -22,7 +22,7 @@ from django.conf import settings
 from home.views import home
 from experiments.views import test, test_js_request
 from private_notes.views import create_private_note, find_and_check_private_note, input_second_password
-from audio_test.views import add_new_audio, ShowAudioTest
+from audio_test.views import add_new_audio, ShowAudioTest, post_processing
 
 
 urlpatterns = [
@@ -38,6 +38,7 @@ urlpatterns = [
     # path('audio_test/', show_audio_test, name='show_audio_test'),
     path('audio_test/', ShowAudioTest.as_view(), name='show_audio_test'),
     path('audio_test/add/', add_new_audio, name='add_audio'),
+    path('audio_test/request/', post_processing),
 
     # my tests and experiments
     path('test/', test, name='test'),

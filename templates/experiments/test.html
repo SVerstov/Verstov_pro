@@ -2,115 +2,31 @@
 {% load static %}
 
 {% block css %}
-    <style>
+<link rel="stylesheet" href="{% static 'css/audio_test/player.css' %}">
 
-
-* {
-  box-sizing: border-box;
-}
-
-.audio-player {
-  width: 100%;
-  max-width: 475px;
-  padding: 35px 20px;
-  margin: auto;
-  background-color: white;
-  border: 1px solid black;
-}
-.audio-player .player-controls {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.audio-player #radioIcon {
-  width: 35px;
-  height: 30px;
-  background: url('{% static "/img/tickbox.gif" %}') no-repeat center;
-  background-size: contain;
-}
-.audio-player #playAudio {
-  -webkit-appearance: none;
-  outline: none;
-  cursor: pointer;
-  border: none;
-  width: 30px;
-  height: 30px;
-  background: url('{% static "img/play.png" %}') no-repeat center;
-  background-size: contain;
-}
-.audio-player #playAudio.pause {
-  background: url('{% static "img/pause.png" %}') no-repeat center;
-  background-size: contain;
-}
-.audio-player p {
-  margin: 0 0 0 5px;
-  line-height: 1;
-  display: inline-flex;
-}
-.audio-player p small {
-  font-size: 10px;
-}
-.audio-player #seekObjContainer {
-  position: relative;
-  width: 75%;
-  margin: 0 5px;
-  height: 5px;
-}
-.audio-player #seekObjContainer #seekObj {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: #e3e3e3;
-  border: 1px solid black;
-}
-.audio-player #seekObjContainer #seekObj #percentage {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background-color: coral;
-}
-
-    </style>
    {% endblock %}
 
 {% block content %}
 
 
-<div class="audio-player">
 
-  <audio id="audio">
+<div class="player">
+    <audio>
     <source src="https://thenewcode.com/assets/audio/24-ghosts-III.mp3" type="audio/mp3">
   </audio>
-
-  <div class="player-controls">
-
-
-
-    <button id="playAudio"></button>
-
-    <div id="seekObjContainer">
-      <div id="seekObj">
-        <div id="percentage"></div>
-      </div>
-    </div>
-
-    <p><small id="currentTime">00:00</small></p>
-
-    <div id="radioIcon"></div>
-  </div>
+    <button type="button" class="btn btn-light">Light</button>
 </div>
 
-        <p><small id="currentTime">00:00</small></p>
 
-      </div>
-    </div>
-
-
+<div class="player">
+    <audio>
+    <source src="https://thenewcode.com/assets/audio/24-ghosts-III.mp3">
+  </audio>
+</div>
 
 
 
     <script src="{% static 'js/audio_test/player.js' %}"></script>
+    <script src="{% static 'js/audio_test/control_audio.js' %}"></script>
 
 {% endblock %}

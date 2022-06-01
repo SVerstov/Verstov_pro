@@ -1,64 +1,64 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block sub_title %}
-    Тест на аудиофила
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/audio_test/player.css' %}">
 {% endblock %}
 
+{% block sub_title %}
+Тест на аудиофила
+{% endblock %}
 
-
-
-
-{% block content %}
-
-
-
+{% block content%}
+    {% csrf_token %}
     <a href="{% url 'add_audio' %}">Добавить аудио</a>
+Описание теста
+{% endblock %}
 
-    {% for song in songs %}
-        {#  Вывод всех аудиокомпозиций      #}
-        {{ song.pk }}
+{% block new_card %}
+{% for song in songs %}
+<div class="card mb-3">
+    <div class="card-header">
+           Трек {{ forloop.counter }}/{{ songs.count}}:
+        <span style="font-weight:bold"> {{song.author}} - {{song.title}} </span>
+    </div>
+    <div class="card-body">
+        <div class="media">
+            <div class="col-md-4 col-sm-5">
+                <img class="img-fluid img-left" src="{{ song.photo.url }}" alt="Dnl">
+            </div>
+            <div class="media-body">
 
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-2">
-                    <img src="{{ song.photo.url }}" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-10">
-                    <div class="card-body">
-                        <h5 class="card-title">НАЗВАНИЕ ТРЕКА</h5>
-                        <p class="card-text">
-                        <div class="song">
+                 <div class="song">
+                    <div class="player">
+                        <audio>
+                            <source src="{{ song.uncompressed_audio.url }}" type="audio/mp3">
+                        </audio>
+                        <button class="btn btn-secondary vote {{ song.id }}" song_id='{{ song.id }}' answer = 'wav' tip="Несжатое">Выбрать1</button>
+                    </div>
+                    <div class="player">
+                        <audio src="{{ song.mp3_320.url }}"></audio>
+                        <button class="btn btn-secondary vote {{ song.id }}" song_id='{{ song.id }}' answer = '320' tip='mp3 320k'>Выбрать2</button>
+                    </div>
 
-                            <div>
-                                <audio src="{{ song.uncompressed_audio.url }}" controls></audio>
-                                <button song_id="{{ song.id }} vote="uncompressed_audio">Выбрать</button>
-                            </div>
-
-                            <div style="background-color: red">
-                                <audio src="{{ song.mp3_320.url }}" controls></audio>
-                                <button song_id="{{ song.id }}" vote='mp3_320'>Выбрать</button>
-                            </div>
-
-                            <div>
-                                <audio src="{{ song.mp3_128.url }}" controls></audio>
-                                <button song_id="{{ song.id }}" vote='mp3_128'>Выбрать</button>
-                            </div>
-
-
-                        </div>
-
-
+                    <div class="player">
+                        <audio src="{{ song.mp3_128.url }}"></audio>
+                        <button class="btn btn-secondary vote {{ song.id }}" song_id="{{ song.id }}" answer = '128' tip='mp3 128k'>Выбрать3</button>
                     </div>
                 </div>
+
+
             </div>
         </div>
-    {% endfor %}
+    </div>
 
+</div>
+{% endfor %}
 
-    <script src="{% static 'js/audio_test/control_audio.js' %}"></script>
-    <script src="{% static 'js/audio_test/shuffle_audio.js' %}"></script>
-    <script src="{% static 'js/audio_test/buttons_click_events.js' %}"></script>
+<script src="{% static 'js/audio_test/player.js' %}"></script>
+<script src="{% static 'js/audio_test/control_audio.js' %}"></script>
+<script src="{% static 'js/audio_test/shuffle_audio.js' %}"></script>
+<script src="{% static 'js/audio_test/buttons_click_events.js' %}"></script>
 
 
 {% endblock %}
