@@ -7,6 +7,7 @@ from .forms import AudioCompositionForm
 from .models import AudioComposition
 from tasks import convert_wav_to_mp3
 
+
 class ShowAudioTest(ListView):
     'Audio test homepage'
     model = AudioComposition
@@ -15,8 +16,7 @@ class ShowAudioTest(ListView):
 
     def get_queryset(self):
         """Filer. Only songs with is_published flag will get into queryset"""
-        return AudioComposition.objects.filter(is_published=True)
-
+        return AudioComposition.objects.filter(is_published=True).exclude(mp3_128='')
 
 
 def add_new_audio(request):
@@ -40,17 +40,16 @@ def add_new_audio(request):
         return render(request, 'audio_test/add_audio.html', context)
 
 
-def convert_to_mp3_and_save():
-    print('Im here')
-    print(type())
-    # mp.Process(target=convert_to_mp3_and_save, args=(audio_db_object,)).start()
+def collect_statistics(request):
+    song = AudioComposition.objects.get(pk=int(request.headers['Song-Id']))
+    answer = request.headers['Answer']
+    match answer:
+        case 'wav':
+            song.click_wav += 1
+        case '128':
+            song.clicks_on_128 += 1
+        case '320':
+            song.clicks_on_320 += 1
+    song.save()
 
-    # mp.Process(target=do_something.main, args=['other', 'args']).start()
-
-# class AddAudio(LoginRequiredMixin, CreateView):
-#     form_class = AudioCompositionForm
-#     template_name = 'audio_test/add_audio.html'
-def post_processing(request):
-    print('Запрос с JS:')
-    print(request.headers)
     return HttpResponse('')

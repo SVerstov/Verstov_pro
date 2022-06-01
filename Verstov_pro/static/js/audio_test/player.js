@@ -1,3 +1,7 @@
+// https://github.com/greghub/green-audio-player
+// create and init green audio player
+// volume control is hidden
+
 (function (f) {
     if (typeof exports === "object" && typeof module !== "undefined") {
         module.exports = f()
