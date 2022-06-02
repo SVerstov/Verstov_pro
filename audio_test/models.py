@@ -20,6 +20,7 @@ def delete_special_symbols(string):
 class AudioComposition(models.Model):
     title = models.CharField("Заголовок", max_length=150)
     author = models.CharField('Автор', max_length=150)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     photo = models.ImageField('Обложка', upload_to=content_file_name, blank=True)
     uncompressed_audio = models.FileField('Несжатое аудио', upload_to=content_file_name, blank=False,
                                           validators=[FileExtensionValidator(['wav'],
@@ -37,17 +38,6 @@ class AudioComposition(models.Model):
     def __str__(self):
         return self.title
 
-    # def form_valid(self, form):
-    #     print(f'Form is valid. Title - {form.title}')
-    #     return HttpResponse('All is ok')
-    #     return super().form_valid(form)
-    #
-    # def get_absolute_url(self):
-    #     return reverse('home')
-
-
-class Statistic(models.Model):
-    headphones_attempts = models.IntegerField(default=0)
-    headphones_points = models.IntegerField(default=0)
-    speakers_attempts = models.IntegerField(default=0)
-    speakers_points = models.IntegerField(default=0)
+    class Meta:
+        verbose_name = 'Аудио трек'
+        verbose_name_plural = 'Аудио треки'

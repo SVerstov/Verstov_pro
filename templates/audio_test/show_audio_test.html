@@ -16,12 +16,11 @@
 <p class="text-start">Прослушайте 3 отрывка для каждого трека, и выберите тот, где по вашему мнению
     <span style="font-weight:bold">наилучшее</span> качество!</p>
 
-<a href="{% url 'add_audio' %}">Добавить аудио</a>
 
 {% endblock %}
 
 {% block new_card %}
-{% for song in songs %}
+{% for song in songs %}?
 <div class="card mb-3">
     <div class="card-header">
         Трек {{ forloop.counter }}/{{ songs.count}}:
@@ -74,10 +73,9 @@
 </div>
 
 
-
-<script src="{% static 'js/audio_test/player.js' %}"></script>
 <script src="{% static 'js/audio_test/control_audio.js' %}"></script>
 <script src="{% static 'js/audio_test/shuffle_audio.js' %}"></script>
+<script src="{% static 'js/audio_test/player.js' %}"></script>
 <script src="{% static 'js/audio_test/buttons_click_events.js' %}"></script>
 
 

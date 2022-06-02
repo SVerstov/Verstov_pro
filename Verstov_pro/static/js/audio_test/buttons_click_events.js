@@ -2,7 +2,7 @@ const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 var user_score = [0,0];
 
 function sendStatistic(csrftoken, song_id, answer) {
-
+// todo спросить - нормально ли отправлять данные в headers
     fetch('request/', {
         method: 'POST',
         headers: {
