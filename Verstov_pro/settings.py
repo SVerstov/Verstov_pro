@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'url_shortener',
     'private_notes',
     'audio_test',
-    'experiments',  # this is app for my own experiments and tests
 ]
 
 MIDDLEWARE = [
@@ -119,7 +118,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = Path(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    Path(BASE_DIR, 'Verstov_pro/static'),
+    Path(BASE_DIR, '/static'),
 ]
 
 # Default primary key field type
