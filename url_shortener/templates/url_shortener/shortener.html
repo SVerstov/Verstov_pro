@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+    Сокращатель ссылок
+{% endblock %}
+
+{% block sub_title %}
+    Сокращатель ссылок
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'shortener' %}" method="post">
+        {% csrf_token %}
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">URL</label>
+            <input type="url" name="full_url" class="form-control" required id="id_full_url"
+                   placeholder="Вставьте URL сюда">
+        </div>
+        <div class="d-grid gap-2">
+
+            <button type="submit" class="btn btn-primary mt-3">Сократить URL</button>
+</div>
+
+    </form>
+
+{% endblock %}

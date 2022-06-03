@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    Сокращатель ссылок
+{% endblock %}
+
+{% block sub_title %}
+    Сокращатель ссылок
+{% endblock %}
+
+{% block content %}
+
+        <h2>{{ SITE_URL }}{{ short_id }}
+
+        </h2>
+        <button onclick="copyText()" id='copy-btn' class="btn btn-outline-primary">Копировать</button>
+        <button onclick="window.location.href = '{% url 'shortener' %}';" class="btn btn-outline-primary">Сократить ещё
+            одну ссылку
+        </button>
+
+    <script>
+        function copyText() {
+            /* Copy text into clipboard */
+            navigator.clipboard.writeText
+            ("{{ SITE_URL }}{{ short_id }}");
+            document.getElementById("copy-btn")
+                .innerHTML = 'Скопировано!';
+        }
+    </script>
+
+{% endblock %}

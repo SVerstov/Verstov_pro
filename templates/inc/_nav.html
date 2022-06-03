@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
     <div class="container-fluid">
-НАВБАР
+        <a class="navbar-brand" href="{% url "home" %}">Verstov.pro</a>
+
+        {% if request.user.is_staff %}
+        <a class="nav-link active" href="/admin/">Админка</a>
+        {% endif %}
     </div>
 </nav>
 

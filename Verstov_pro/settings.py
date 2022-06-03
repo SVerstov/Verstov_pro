@@ -118,7 +118,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = Path(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-    Path(BASE_DIR, '/static'),
+    Path(BASE_DIR, 'Verstov_pro/static'),
 ]
 
 # Default primary key field type
