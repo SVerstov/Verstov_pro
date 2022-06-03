@@ -1,7 +1,3 @@
-''' Celery tasks file
-Use this command to launch celery:
-celery -A tasks worker -l info
-'''
 import os
 from celery import Celery
 
@@ -14,4 +10,3 @@ app = Celery('Verstov_pro')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
-

@@ -5,9 +5,9 @@ from audio_test.models import AudioComposition
 from Verstov_pro.settings import MEDIA_ROOT
 
 
-def convert_to_mp3_and_save(pk: int):
+def convert_to_mp3_and_save(pk: int, lowest_quality=128):
     """ finds wav file via pk,
-    convert wav file into 2 mp3 files (128k and 320к),
+    convert wav file into 2 mp3 files (320k and custom),
     save new files in DB """
 
     # find wav and open it
@@ -26,8 +26,7 @@ def convert_to_mp3_and_save(pk: int):
         sound.export(path_mp3, format="mp3", bitrate=f'{bitrate}k')
         return folder_path + '/' + name_mp3
 
-    db_object.mp3_lowest.name = save_mp3_and_return_mp3_path(128)
+    db_object.mp3_lowest.name = save_mp3_and_return_mp3_path(lowest_quality)
     db_object.mp3_high.name = save_mp3_and_return_mp3_path(320)
+
     db_object.save()
-
-

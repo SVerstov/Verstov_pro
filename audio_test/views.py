@@ -22,9 +22,9 @@ def collect_statistics(request):
     match answer:
         case 'wav':
             song.click_wav += 1
-        case '128':
+        case 'mp3_low':
             song.clicks_low_mp3 += 1
-        case '320':
+        case 'mp3_high':
             song.clicks_high_mp3 += 1
     song.save()
 

@@ -41,16 +41,16 @@
                     </div>
 
                     <div class="player">
-                        <audio src="{{ song.mp3_320.url }}" preload="metadata"></audio>
-                        <button class="btn btn-secondary vote {{ song.id }}" song_id='{{ song.id }}' answer='320'
+                        <audio src="{{ song.mp3_high.url }}" preload="metadata"></audio>
+                        <button class="btn btn-secondary vote {{ song.id }}" song_id='{{ song.id }}' answer='mp3_high'
                                 tip='mp3 320k'>Выбрать
                         </button>
                     </div>
 
                     <div class="player">
-                        <audio src="{{ song.mp3_128.url }}" preload="metadata"></audio>
-                        <button class="btn btn-secondary vote {{ song.id }}" song_id="{{ song.id }}" answer='128'
-                                tip='mp3 128k'>Выбрать
+                        <audio src="{{ song.mp3_low.url }}" preload="metadata"></audio>
+                        <button class="btn btn-secondary vote {{ song.id }}" song_id="{{ song.id }}" answer='mp3_high '
+                                tip='mp3 {{song.mp3_lowest_quality}}k'>Выбрать
                         </button>
                     </div>
                 </div>
