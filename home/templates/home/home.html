@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
+{% block sub_title%}
+    Добро пожаловать!
+{% endblock %}
 
 {% block content %}
-    Домашняя
- {{ request.build_absolute_uri }}
+<p>
+    Вы находитесь на личном сайте Алексея Селиверстова.
+    Приглашаю вас пройти <a href="{% url 'show_audio_test' %}" class="link-dark">аудио тест</a> и узнать,
+    сможете ли вы услышать разницу между тру-несжатым аудио и богомерзким mp3
+</p>
+<p>
+    Сайт написан на Django 4, свёрстан при помощи bootstrap.
+    <a href="https://bitbucket.org/verstov/verstov_pro/" class="link-dark">Исходный код сайта тут</a>
+    </p>
+
 {% endblock %}

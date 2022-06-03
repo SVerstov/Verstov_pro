@@ -34,21 +34,21 @@
 
                 <div class="song">
                     <div class="player">
-                        <audio src="{{ song.uncompressed_audio.url }}" preload="none"></audio>
+                        <audio src="{{ song.uncompressed_audio.url }}" preload="metadata"></audio>
                         <button class="btn btn-secondary vote {{ song.id }}" song_id='{{ song.id }}' answer='wav'
                                 tip="Несжатое">Выбрать
                         </button>
                     </div>
 
                     <div class="player">
-                        <audio src="{{ song.mp3_320.url }}" preload="none"></audio>
+                        <audio src="{{ song.mp3_320.url }}" preload="metadata"></audio>
                         <button class="btn btn-secondary vote {{ song.id }}" song_id='{{ song.id }}' answer='320'
                                 tip='mp3 320k'>Выбрать
                         </button>
                     </div>
 
                     <div class="player">
-                        <audio src="{{ song.mp3_128.url }}" preload="none"></audio>
+                        <audio src="{{ song.mp3_128.url }}" preload="metadata"></audio>
                         <button class="btn btn-secondary vote {{ song.id }}" song_id="{{ song.id }}" answer='128'
                                 tip='mp3 128k'>Выбрать
                         </button>

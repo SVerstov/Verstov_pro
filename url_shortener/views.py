@@ -37,6 +37,7 @@ def shortener(request):
 
 def redirect_to_main_url(request, short_id):
     """ redirect to target URL if short_id exists"""
+    # todo переписать без try
     try:
         redirect_obj = ShortenerFields.objects.get(pk=short_id)
         redirect_obj.count += 1

@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block content %}
+     <p class="mb-2 fw-normal">Одноразовые записки, которые хранятся в зашифрованном виде. Открыть её можно лишь при помощи специальной ссылки. Записка удаляется после прочтения</p>
 
     <form action="{% url 'private_notes' %}" method="post">
         {% csrf_token %}

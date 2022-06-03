@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-
+   <p class="mb-2 fw-normal">Сервис преобразует длинную интернет ссылку в короткую, вида <span class="fw-bold">Verstov.pro/abc</span> </p>
     <form action="{% url 'shortener' %}" method="post">
         {% csrf_token %}
         <div class="col-12">

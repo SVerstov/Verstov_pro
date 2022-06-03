@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic.base import RedirectView
 
 
 from home.views import home
@@ -26,17 +27,19 @@ from audio_test.views import ShowAudioTest, collect_statistics
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     path('', home, name='home'),
     path('', include('url_shortener.urls')),
+
     # private notes urls
     path('private_notes/', create_private_note, name='private_notes'),
     path('private_notes/second_password/', input_second_password, name='second_password'),
     path('<str:short_id>/<slug:password>', find_and_check_private_note),
+
     # audio test urls
-    # path('audio_test/', show_audio_test, name='show_audio_test'),
     path('audio_test/', ShowAudioTest.as_view(), name='show_audio_test'),
     path('audio_test/request/', collect_statistics),
+
+    path(r'^favicon\.ico$', RedirectView.as_view(url=f'{settings.STATIC_URL}/favicon.ico', permanent=True)),
 ]
 
 # make media files available
