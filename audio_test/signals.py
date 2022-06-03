@@ -8,8 +8,8 @@ from django.conf import settings
 @receiver(pre_delete, sender=AudioComposition)
 def delete_media_files(sender, instance, **kwargs):
     instance.uncompressed_audio.delete(False)
-    instance.mp3_320.delete(False)
-    instance.mp3_128.delete(False)
+    instance.mp3_high.delete(False)
+    instance.mp3_lowest.delete(False)
     instance.photo.delete(False)
 
 

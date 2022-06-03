@@ -4,10 +4,10 @@ from django.utils.safestring import mark_safe
 
 
 class AudioTestAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'author', 'get_photo', 'clicks_on_128', 'clicks_on_320', 'click_wav','is_published')
+    list_display = ('id', 'title', 'author', 'get_photo', 'clicks_low_mp3', 'clicks_high_mp3', 'click_wav', 'is_published')
     list_display_links = ('id', 'title')
     list_editable = ('is_published',)
-    exclude = ('mp3_320', 'mp3_128', 'clicks_on_128', 'clicks_on_320', 'click_wav')
+    exclude = ('mp3_high', 'mp3_lowest', 'clicks_low_mp3', 'clicks_high_mp3', 'click_wav')
 
     def get_photo(self, obj):
         """Show photo in admin panel"""

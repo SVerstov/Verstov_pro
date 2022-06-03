@@ -26,11 +26,12 @@ class AudioComposition(models.Model):
                                           validators=[FileExtensionValidator(['wav'],
                                                                              "Файлы с расширением “%(extension)s” не подходят. "
                                                                              "Пожалуйста загрузите файл с расширением : %(allowed_extensions)s.")])
-    mp3_320 = models.FileField(upload_to=content_file_name, blank=True)
-    mp3_128 = models.FileField(upload_to=content_file_name, blank=True)
+    mp3_high = models.FileField(upload_to=content_file_name, blank=True)
+    mp3_lowest = models.FileField(upload_to=content_file_name, blank=True)
+    mp3_lowest_quality = models.IntegerField('Наихудшее качество', blank=False, choices=[32, 64, 96, 128])
     # collect attempts statistic
-    clicks_on_128 = models.IntegerField(default=0)
-    clicks_on_320 = models.IntegerField(default=0)
+    clicks_low_mp3 = models.IntegerField(default=0)
+    clicks_high_mp3 = models.IntegerField(default=0)
     click_wav = models.IntegerField(default=0)
 
     is_published = models.BooleanField('опубликовано', default=True)

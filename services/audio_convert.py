@@ -26,8 +26,8 @@ def convert_to_mp3_and_save(pk: int):
         sound.export(path_mp3, format="mp3", bitrate=f'{bitrate}k')
         return folder_path + '/' + name_mp3
 
-    db_object.mp3_128.name = save_mp3_and_return_mp3_path(128)
-    db_object.mp3_320.name = save_mp3_and_return_mp3_path(320)
+    db_object.mp3_lowest.name = save_mp3_and_return_mp3_path(128)
+    db_object.mp3_high.name = save_mp3_and_return_mp3_path(320)
     db_object.save()
 
 

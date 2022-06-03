@@ -39,7 +39,7 @@ urlpatterns = [
     path('audio_test/', ShowAudioTest.as_view(), name='show_audio_test'),
     path('audio_test/request/', collect_statistics),
 
-    path(r'^favicon\.ico$', RedirectView.as_view(url=f'{settings.STATIC_URL}/favicon.ico', permanent=True)),
+    path(r'favicon.ico', RedirectView.as_view(url=f'{settings.STATIC_URL}/favicon.ico', permanent=True)),
 ]
 
 # make media files available

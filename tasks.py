@@ -2,7 +2,7 @@
 import django
 
 django.setup()
-from Verstov_pro.celery import app
+from Verstov_pro.celeryapp import app
 from services.audio_convert import convert_to_mp3_and_save
 
 

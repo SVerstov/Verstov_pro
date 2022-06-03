@@ -21,12 +21,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='audiocomposition',
-            name='clicks_on_128',
+            name='clicks_low_mp3',
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
             model_name='audiocomposition',
-            name='clicks_on_320',
+            name='clicks_high_mp3',
             field=models.IntegerField(default=0),
         ),
     ]
