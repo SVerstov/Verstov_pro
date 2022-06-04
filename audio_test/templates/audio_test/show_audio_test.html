@@ -48,8 +48,8 @@
                     </div>
 
                     <div class="player">
-                        <audio src="{{ song.mp3_low.url }}" preload="metadata"></audio>
-                        <button class="btn btn-secondary vote {{ song.id }}" song_id="{{ song.id }}" answer='mp3_high '
+                        <audio src="{{ song.mp3_lowest.url }}" preload="metadata"></audio>
+                        <button class="btn btn-secondary vote {{ song.id }}" song_id="{{ song.id }}" answer='mp3_low'
                                 tip='mp3 {{song.mp3_lowest_quality}}k'>Выбрать
                         </button>
                     </div>

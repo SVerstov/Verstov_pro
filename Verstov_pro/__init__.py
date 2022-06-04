@@ -1,5 +1,5 @@
 # импортируем из созданного нами ранее файла celery.py наш объект(экземпляр класса) celery (app)
-from .celeryapp import app as celery_app
+from .celery import app as celery_app
 
 
 # Подключаем объект

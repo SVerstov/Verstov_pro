@@ -20,7 +20,7 @@ class AudioTestAdmin(admin.ModelAdmin):
         """ After save starts converting audio.
         celery and redis must be on work!
         """
-        from tasks import convert_wav_to_mp3
+        from .tasks import convert_wav_to_mp3
         from django.contrib import messages
 
         audio_db_object = form.save()
