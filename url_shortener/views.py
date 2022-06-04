@@ -13,17 +13,13 @@ def shortener(request):
     elif request.method == 'POST':
         # get user input (url)
         full_url = request.POST.get('full_url')
-        try:
-            # duplication check
+        # duplication check
+        if ShortenerFields.objects.filter(full_url=full_url).exists():
             # return short_id from DB if duplicate exists
             obj = ShortenerFields.objects.get(full_url=full_url)
             # return short_id from DB without generation
             context = {'short_id': obj.pk}
-
-        except ObjectDoesNotExist:
-            # TODO переделать, чтобы главное действие происходило, не через искление
-            # ToDO верификация URL на уровне сервера
-
+        else:
             short_id = get_short_id(Fields=ShortenerFields)
             obj = ShortenerFields()
             obj.full_url = full_url
@@ -37,7 +33,6 @@ def shortener(request):
 
 def redirect_to_main_url(request, short_id):
     """ redirect to target URL if short_id exists"""
-    # todo переписать без try
     try:
         redirect_obj = ShortenerFields.objects.get(pk=short_id)
         redirect_obj.count += 1

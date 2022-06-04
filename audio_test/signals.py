@@ -1,3 +1,5 @@
+""" Signals here delete unnecessary files in media/audio_test """
+
 import os
 from django.db.models.signals import pre_delete, post_delete
 from django.dispatch import receiver

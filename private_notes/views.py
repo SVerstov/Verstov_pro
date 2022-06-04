@@ -17,7 +17,7 @@ def create_private_note(request):
     elif request.method == 'POST':
         # obtain data from formsg
         user_note = request.POST.get('user_note')
-        second_password = request.POST.et('second_password')
+        second_password = request.POST.get('second_password')
         # generate key
         password = get_random_chars(length=16)
         # encrypt user note
