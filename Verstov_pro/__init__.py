@@ -1,4 +1,5 @@
 # импортируем из созданного нами ранее файла celery.py наш объект(экземпляр класса) celery (app)
+from __future__ import absolute_import
 from .celery import app as celery_app
 
 

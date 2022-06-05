@@ -6,7 +6,6 @@ from django.dispatch import receiver
 from .models import AudioComposition
 from django.conf import settings
 
-
 @receiver(pre_delete, sender=AudioComposition)
 def delete_media_files(sender, instance, **kwargs):
     instance.uncompressed_audio.delete(False)
@@ -21,7 +20,6 @@ def delete_empty_folders_receiver(sender, **kwargs):
         for root, dirs, files in os.walk(path):
             for d in dirs:
                 dir = os.path.join(root, d)
-                # check if dir is empty
                 if not os.listdir(dir):
                     os.rmdir(dir)
                 delete_empty_folders(dir)
