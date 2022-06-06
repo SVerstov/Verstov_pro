@@ -24,8 +24,9 @@ class AudioTestAdmin(admin.ModelAdmin):
         from django.contrib import messages
 
         audio_db_object = form.save()
-        convert_wav_to_mp3.delay(pk=audio_db_object.pk, lowest_quality=audio_db_object.mp3_lowest_quality)
-        messages.success(request, 'Аудио обрабатывается и скоро будет доступно!')
+        if not (audio_db_object.mp3_lowest or audio_db_object.mp3_high):
+            convert_wav_to_mp3.delay(pk=audio_db_object.pk, lowest_quality=audio_db_object.mp3_lowest_quality)
+            messages.success(request, 'Аудио обрабатывается и скоро будет доступно!')
 
 
 

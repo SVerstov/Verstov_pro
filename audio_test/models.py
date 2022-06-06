@@ -1,8 +1,6 @@
 import re
 from django.db import models
 from django.core.validators import FileExtensionValidator
-from django.http import HttpResponse
-from django.urls import reverse
 
 
 def content_file_name(instance, filename):
@@ -29,7 +27,7 @@ class AudioComposition(models.Model):
 
     mp3_high = models.FileField(upload_to=content_file_name, blank=True)
     mp3_lowest = models.FileField(upload_to=content_file_name, blank=True)
-    quality = [(32,'32k'), (64, '64k'), (96, '96k'), (128, '128k')]
+    quality = [(32, '32k'), (64, '64k'), (96, '96k'), (128, '128k')]
     mp3_lowest_quality = models.IntegerField('Наихудшее качество', blank=False, choices=quality, default=128)
 
     # collect attempts statistic
