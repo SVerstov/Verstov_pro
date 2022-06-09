@@ -25,7 +25,7 @@ if os.path.isfile(dotenv_file):
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = eval(os.environ['DEBUG'])
+DEBUG = os.environ['DEBUG'] == 'True'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'Verstov_pro.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-if eval(os.environ['SITE_ON_SERVER']):
+if os.environ['SITE_ON_SERVER'] == 'True':
     DATABASES = {
         'default': {
             'ENGINE': os.environ['DB_ENGINE'],

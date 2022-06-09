@@ -1,3 +1,5 @@
+import json
+
 from django.views.generic import ListView
 from django.http import HttpResponse
 from .models import AudioComposition
@@ -15,9 +17,11 @@ class ShowAudioTest(ListView):
 
 
 def collect_statistics(request):
-    song = AudioComposition.objects.get(pk=int(request.headers['Song-Id']))
-    answer = request.headers['Answer']
+    song = AudioComposition.objects.get(pk=int(request.POST.get('Song-Id')))
+    answer = request.POST.get('Answer')
+    print(request.POST.get('Answer'))
 
+    # print(answer2)
     match answer:
         case 'wav':
             song.click_wav += 1
