@@ -2,18 +2,17 @@ const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 var user_score = [0,0];
 
 function sendStatistic(csrftoken, song_id, answer) {
-// todo спросить - нормально ли отправлять данные в headers
     fetch('request/', {
         method: 'POST',
         headers: {
             'X-CSRFToken': csrftoken,
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
             'Song-Id': song_id,
             'Answer': answer,
-        },
+        }),
     });
-
 }
 
 
