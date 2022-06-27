@@ -85,7 +85,5 @@ def input_second_password(request, short_id):
         second_password = request.POST.get('second_password')
         # get objects from cache, clean cache
         object_note = cache.get(f'object_note_{short_id}')
-        cache.delete(f'object_note_{short_id}')
         password = cache.get(f'password_{short_id}')
-        cache.delete(f'password_{short_id}')
         return decrypt_and_show_private_note(request, object_note, password, second_password)
