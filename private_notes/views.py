@@ -50,11 +50,11 @@ def find_and_check_private_note(request, short_id, password):
         # check if note has a second password
         if object_note.is_password:
             # save some vars in cache
-            cache.set(f'object_note{request.session.session_key}', object_note)
-            cache.set(f'password{request.session.session_key}', password)
+            cache.set(f'object_note_{short_id}', object_note)
+            cache.set(f'password_{short_id}', password)
             # requesting the second password
             messages.warning(request, 'Записка зашифрована дополнительным паролем!')
-            return redirect('second_password')
+            return redirect('second_password', short_id=short_id)
         return decrypt_and_show_private_note(request, object_note, password)
     else:
         messages.error(request, 'Записка не найдена!')
@@ -77,16 +77,15 @@ def decrypt_and_show_private_note(request, object_note, password, second_passwor
     return render(request, 'private_notes/show_decrypted_note.html', context)
 
 
-def input_second_password(request):
+def input_second_password(request, short_id):
     """ Get second password from user """
     if request.method == 'GET':
         return render(request, 'private_notes/input_second_password.html')
     elif request.method == 'POST':
         second_password = request.POST.get('second_password')
         # get objects from cache, clean cache
-        object_note = cache.get(f'object_note{request.session.session_key}')
-        cache.delete(f'object_note{request.session.session_key}')
-        password = cache.get(f'password{request.session.session_key}')
-        cache.delete(f'password{request.session.session_key}')
-        print(request.session.session_key)
+        object_note = cache.get(f'object_note_{short_id}')
+        cache.delete(f'object_note_{short_id}')
+        password = cache.get(f'password_{short_id}')
+        cache.delete(f'password_{short_id}')
         return decrypt_and_show_private_note(request, object_note, password, second_password)
