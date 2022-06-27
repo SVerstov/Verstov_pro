@@ -67,8 +67,13 @@ def decrypt_and_show_private_note(request, object_note, password, second_passwor
         decrypted_data = decrypt_data(object_note.encrypted_data, password, second_password)
     except ValueError:
         # if decrypt failed render page with error
-        messages.error(request, 'Ошибка расшифровки - ссылка или пароль не верны')
-        return render(request, 'private_notes/new_private_note.html')
+        if second_password:
+            messages.error(request, 'Ошибка расшифровки - неверный пароль!')
+            return redirect(request.path)
+            # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        else:
+            messages.error(request, 'Ошибка расшифровки - ссылка неверна!')
+            return render(request, 'private_notes/new_private_note.html')
     # remove note from DB
     object_note.delete()
     # render page with decrypted note
