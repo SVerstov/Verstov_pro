@@ -1,4 +1,6 @@
-import random, string
+import random
+import string
+
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA256
 
@@ -31,7 +33,6 @@ def encrypt_data(text, password, second_password=None):
 
 
 def decrypt_data(encrypted_data, password, second_password=None):
-
     if second_password:
         key = password_to_key(password + second_password)
     else:

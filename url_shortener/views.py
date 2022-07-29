@@ -1,10 +1,11 @@
 from django.contrib import messages
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
 from django.db.models import ObjectDoesNotExist
-from .models import ShortenerFields
-from .forms import ShortenerForm
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
 from services.crypto import get_short_id
+from .forms import ShortenerForm
+from .models import ShortenerFields
 
 
 def shortener(request):

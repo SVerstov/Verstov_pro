@@ -1,5 +1,5 @@
 const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-var user_score = [0,0];
+var user_score = [0, 0];
 
 function sendStatistic(csrftoken, song_id, answer) {
     fetch('request/', {
@@ -21,7 +21,8 @@ function addVoteListeners() {
 
     for (let voteButton of voteButtons) {
         voteButton.addEventListener('click', showAudioQuality);
-    };
+    }
+    ;
 };
 
 window.addEventListener('load', addVoteListeners);
@@ -47,7 +48,8 @@ function showAudioQuality() {
     } else {
         this.classList.add("btn-danger");
         user_score[1]++
-    };
+    }
+    ;
     updateUserScore();
 
 
@@ -55,7 +57,7 @@ function showAudioQuality() {
     sendStatistic(csrftoken, song_id, answer);
 };
 
-function updateUserScore(){
+function updateUserScore() {
     let res = document.getElementById('userScore');
     res.innerText = user_score[0] + ' из ' + user_score[1];
 

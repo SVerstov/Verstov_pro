@@ -1,10 +1,9 @@
-from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.cache import cache
-from .models import PrivateNotes
-from services.crypto import get_short_id, encrypt_data, decrypt_data, get_random_chars
+from django.shortcuts import render, redirect
 
-# TODO попробовать реализовать запрос дополнительного пароля без использования кэша
+from services.crypto import get_short_id, encrypt_data, decrypt_data, get_random_chars
+from .models import PrivateNotes
 
 
 def create_private_note(request):
@@ -55,7 +54,8 @@ def find_and_check_private_note(request, short_id, password):
             # requesting the second password
             messages.warning(request, 'Записка зашифрована дополнительным паролем!')
             return redirect('second_password', short_id=short_id)
-        return decrypt_and_show_private_note(request, object_note, password)
+        else:
+            return decrypt_and_show_private_note(request, object_note, password)
     else:
         messages.error(request, 'Записка не найдена!')
         return render(request, 'private_notes/new_private_note.html')
